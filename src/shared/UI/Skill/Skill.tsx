@@ -1,5 +1,6 @@
 import woman from './../../../assets/young-woman.png';
 import computer from './../../../assets/computer.svg';
+import ring from './../../../assets/Ring.svg';
 
 export const Skill = () => {
   return (
@@ -59,9 +60,20 @@ export const Skill = () => {
           </div>
 
           <div className="absolute top-[34%] left-[90%] transform rounded-full border-[5px]">
-            <div className="text-black">
-              <strong>5K+</strong>
-              <span>Video Courses</span>
+            <div className="bg-[#F9FAFB] flex flex-col justify-center items-center text-black w-[144.72px] h-[189.2px] top-[143px] left-[1176px] p-[18.36px] border-[0.76px] border-solid border-[#7F56D9] rounded-[18.36px] gap-[12.24px]">
+              <img
+                className=" w-[48.96px] h-[48.96px] top-[20.94px] left-[18.36px] rounded-[12.24px] transform rotate-0"
+                src={ring}
+                alt="ring"
+              />
+              <div className="flex flex-col justify-center items-center">
+                <strong className="flex items-center  font-inter text-[25px] font-bold leading-7 tracking-normal text-left mb-[6.1px]">
+                  5K+
+                </strong>
+                <span className="w-[120px] h-[18px] opacity-50 font-inter text-base font-normal leading-5 tracking-normal text-left">
+                  Online Courses
+                </span>
+              </div>
             </div>
           </div>
 
