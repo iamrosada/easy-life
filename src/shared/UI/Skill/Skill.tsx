@@ -36,6 +36,29 @@ export const Skill = () => {
               alt="woman"
             />
           </div>
+          <div className="absolute top-[44%] left-[-9%] transform translate[-50%,-50%] w-[495px] h-[495px] rounded-full border-[5px]">
+            <div className="text-black">
+              <strong>2K+</strong>
+              <span>Video Courses</span>
+            </div>
+          </div>
+          <div className="absolute top-[84%] left-[-10%] transform  rounded-full border-[5px]">
+            <div className="bg-[#7F56D9] w-[42.84px] h-[42.84px] rounded-full  border-[0.76px] border-solid border-[#7F56D9] absolute"></div>
+          </div>
+
+          <div className="absolute top-[34%] left-[90%] transform rounded-full border-[5px]">
+            <div className="text-black">
+              <strong>5K+</strong>
+              <span>Video Courses</span>
+            </div>
+          </div>
+
+          <div className="absolute top-[70%] left-[90%]    rounded-full border-[5px]">
+            <div className="text-black">
+              <strong>250+</strong>
+              <span>Tutors</span>
+            </div>
+          </div>
         </div>
 
         {/* <div className="w-[495.72px] h-[495.72px] rounded-full border-[1.76px] border-solid border-purple-500 mx-auto my-16"></div>
