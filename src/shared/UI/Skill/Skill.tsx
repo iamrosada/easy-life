@@ -1,11 +1,12 @@
 import woman from './../../../assets/young-woman.png';
 import computer from './../../../assets/computer.svg';
 import ring from './../../../assets/Ring.svg';
+import board from './../../../assets/Board.svg';
 
 export const Skill = () => {
   return (
     <div className="flex bg-white-500">
-      <section className="mx-auto max-w-[1100px] flex flex-row justify-between ">
+      <section className="mx-auto max-w-[1100px] flex flex-row justify-between items-center">
         <div className="flex flex-col">
           <p className="w-[573px] h-[246px]  text-black font-inter text-[64px] font-bold leading-tight tracking-tighter">
             Up your <span className="text-[#7F56D9]">skills</span> to{' '}
@@ -28,7 +29,7 @@ export const Skill = () => {
           </div>
         </div>
 
-        <div className="relative">
+        <div className="relative ml-[80px]">
           <div className="w-[495.72px] h-[495.72px] rounded-full border-[1.76px] border-solid border-purple-500 mx-auto my-16"></div>
 
           <div className="bg-purple-500 absolute top-[14%] left-[5%] transform translate[-50%,-50%] w-[495px] h-[495px] rounded-full border-[5px] border-solid border-purple-500">
@@ -38,7 +39,7 @@ export const Skill = () => {
               alt="woman"
             />
           </div>
-          <div className="absolute top-[44%] left-[-9%] transform translate[-50%,-50%] w-[495px] h-[495px] rounded-full border-[5px]">
+          <div className="absolute top-[44%] left-[-18%] transform translate[-50%,-50%] w-[495px] h-[495px] rounded-full border-[5px]">
             <div className="bg-[#EAECF0] flex text-black w-[214.16px] h-[90.84px] top-[317px] left-[697px] p-[18.36px] border-[0.76px] border-solid border-[#7F56D9] rounded-[18.36px] gap-[24.48px]">
               <img
                 className="bg-[#7F56D9] w-[48.96px] h-[48.96px] top-[20.94px] left-[18.36px] rounded-[12.24px] transform rotate-0"
@@ -55,11 +56,11 @@ export const Skill = () => {
               </div>
             </div>
           </div>
-          <div className="absolute top-[84%] left-[-10%] transform  rounded-full border-[5px]">
+          <div className="absolute top-[84%] left-[-8%] transform  rounded-full border-[5px]">
             <div className="bg-[#7F56D9] w-[42.84px] h-[42.84px] rounded-full  border-[0.76px] border-solid border-[#7F56D9] absolute"></div>
           </div>
 
-          <div className="absolute top-[34%] left-[90%] transform rounded-full border-[5px]">
+          <div className="absolute top-[10%] left-[80%] transform rounded-full border-[5px]">
             <div className="bg-[#F9FAFB] flex flex-col justify-center items-center text-black w-[144.72px] h-[189.2px] top-[143px] left-[1176px] p-[18.36px] border-[0.76px] border-solid border-[#7F56D9] rounded-[18.36px] gap-[12.24px]">
               <img
                 className=" w-[48.96px] h-[48.96px] top-[20.94px] left-[18.36px] rounded-[12.24px] transform rotate-0"
@@ -77,10 +78,21 @@ export const Skill = () => {
             </div>
           </div>
 
-          <div className="absolute top-[70%] left-[90%]    rounded-full border-[5px]">
-            <div className="text-black">
-              <strong>250+</strong>
-              <span>Tutors</span>
+          <div className="absolute top-[70%] left-[80%]    rounded-full border-[5px]">
+            <div className="bg-[#EAECF0] flex text-black w-[164.16px] h-[85.84px] top-[317px] left-[697px] p-[18.36px] border-[0.76px] border-solid border-[#7F56D9] rounded-[18.36px] gap-[24.48px]">
+              <img
+                className="bg-[#7F56D9] w-[48.96px] h-[48.96px] top-[20.94px] left-[18.36px] rounded-[12.24px] transform rotate-0"
+                src={board}
+                alt="board"
+              />
+              <div className="flex flex-col justify-center">
+                <span className="w-[120px] h-[18px] opacity-50 font-inter text-base font-normal leading-5 tracking-normal text-left">
+                  Tutors{' '}
+                </span>
+                <strong className="flex items-center  font-inter text-[25px] font-bold leading-7 tracking-normal text-left mb-[6.1px]">
+                  250+{' '}
+                </strong>
+              </div>
             </div>
           </div>
         </div>
