@@ -1,4 +1,5 @@
 import woman from './../../../assets/young-woman.png';
+import computer from './../../../assets/computer.svg';
 
 export const Skill = () => {
   return (
@@ -37,9 +38,20 @@ export const Skill = () => {
             />
           </div>
           <div className="absolute top-[44%] left-[-9%] transform translate[-50%,-50%] w-[495px] h-[495px] rounded-full border-[5px]">
-            <div className="text-black">
-              <strong>2K+</strong>
-              <span>Video Courses</span>
+            <div className="bg-[#EAECF0] flex text-black w-[214.16px] h-[90.84px] top-[317px] left-[697px] p-[18.36px] border-[0.76px] border-solid border-[#7F56D9] rounded-[18.36px] gap-[24.48px]">
+              <img
+                className="bg-[#7F56D9] w-[48.96px] h-[48.96px] top-[20.94px] left-[18.36px] rounded-[12.24px] transform rotate-0"
+                src={computer}
+                alt="computer"
+              />
+              <div className="flex flex-col justify-center">
+                <strong className="flex items-center  font-inter text-[25px] font-bold leading-7 tracking-normal text-left mb-[6.1px]">
+                  2K+
+                </strong>
+                <span className="w-[120px] h-[18px] opacity-50 font-inter text-base font-normal leading-5 tracking-normal text-left">
+                  Video Courses
+                </span>
+              </div>
             </div>
           </div>
           <div className="absolute top-[84%] left-[-10%] transform  rounded-full border-[5px]">
