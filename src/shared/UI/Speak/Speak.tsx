@@ -30,3 +30,21 @@ export const SpeakComponent = () => {
 };
 
 export default SpeakComponent;
+
+export const OuServiceComponent = () => {
+  return (
+    <section className="mx-auto max-w-[1100px]">
+      <div className="mt-[12rem] flex items-center justify-center flex-col">
+        <span className="text-[#6941C6] leading-6 font-[600] mb-[10px]">
+          Our Services
+        </span>
+        <p className="text-[#101828] flex leading-[44px] font-[600] items-center text-3xl">
+          Fostering a playful & engaging learning
+        </p>
+        <p className="text-[#101828] flex leading-[44px] font-[600] items-center text-3xl mt-[-2rem]">
+          environment
+        </p>
+      </div>
+    </section>
+  );
+};

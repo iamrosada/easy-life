@@ -1,7 +1,7 @@
 import { Providers } from '@/Providers';
 import TopNavbar from '@/shared/UI/Navbar/Top';
 import Skill from './shared/UI/Skill/Skill';
-import SpeakComponent from './shared/UI/Speak/Speak';
+import SpeakComponent, { OuServiceComponent } from './shared/UI/Speak/Speak';
 
 function App() {
   return (
@@ -12,6 +12,7 @@ function App() {
       <main>
         <Skill />
         <SpeakComponent />
+        <OuServiceComponent />
       </main>
       <footer></footer>
     </Providers>
