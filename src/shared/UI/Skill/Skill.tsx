@@ -81,7 +81,7 @@ export const Skill = () => {
           <div className="absolute top-[70%] left-[80%]    rounded-full border-[5px]">
             <div className="bg-[#EAECF0] flex text-black w-[164.16px] h-[85.84px] top-[317px] left-[697px] p-[18.36px] border-[0.76px] border-solid border-[#7F56D9] rounded-[18.36px] gap-[24.48px]">
               <img
-                className="bg-[#7F56D9] w-[48.96px] h-[48.96px] top-[20.94px] left-[18.36px] rounded-[12.24px] transform rotate-0"
+                className="bg-[#7F56D9] w-[45.96px] h-[45.96px] top-[20.94px] left-[18.36px] rounded-[12.24px] transform rotate-0"
                 src={board}
                 alt="board"
               />

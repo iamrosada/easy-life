@@ -11,7 +11,7 @@ export const TopNavbar = () => {
             <div className="flex items-center space-x-2">
               <img src={logo} alt="Logo" className="h-6 w-6" />
               <span className="text-black font-inter text-2xl font-extrabold leading-6 tracking-wide text-left">
-                Education-Travel.
+                Easy Life
               </span>
             </div>
           </nav>
