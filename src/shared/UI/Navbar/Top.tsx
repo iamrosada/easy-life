@@ -1,8 +1,15 @@
 import React from 'react';
 
 import logo from './../../../assets/logo.svg';
+import { useNavigate } from 'react-router-dom';
 
 export const TopNavbar = () => {
+  const navigate = useNavigate();
+
+  const handleNavigate = (to: string) => {
+    navigate(to);
+  };
+
   return (
     <div className="flex bg-white-500">
       <header className="w-full p-4">
@@ -43,6 +50,7 @@ export const TopNavbar = () => {
             </div>
             <div>
               <button
+                onClick={() => handleNavigate('/create-account')}
                 type="button"
                 className="items-center  font-inter text-sm font-semibold leading-5 tracking-normal text-left text-white border-[3px] border-solid bg-[#7F56D9] border-[#E9D7FE] w-[150px] h-[40px] p-[10px 16px] border border-gray-300 rounded-md gap-8"
               >
