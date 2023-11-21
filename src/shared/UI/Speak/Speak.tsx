@@ -8,6 +8,12 @@ import userWebIcon from './../../../assets/user_web.svg';
 import nextIcon from './../../../assets/next.svg';
 import nextPurpleIcon from './../../../assets/next_purple.svg';
 
+import facebookIcon from './../../../assets/facebook.svg';
+import xIcon from './../../../assets/x.svg';
+import inIcon from './../../../assets/in.svg';
+
+import footerIcon from './../../../assets/icon_main.svg';
+
 export const SpeakComponent = () => {
   return (
     <section className="mx-auto max-w-[1100px]">
@@ -148,5 +154,87 @@ export const UserExperience = () => {
         ))}
       </div>
     </section>
+  );
+};
+
+export const FooterComponent = () => {
+  return (
+    <div className="bg-[#101828]">
+      <section className="mx-auto max-w-[1100px] flex flex-col">
+        <div className="flex p-[32px]">
+          <nav className="flex flex-col m-[32px]">
+            <div className="flex  items-start">
+              <img src={footerIcon} alt="Logo" className="h-6 w-6" />
+              <span className="text-white ml-2 font-inter  text-2xl font-extrabold leading-6 tracking-wide text-left">
+                Easy Life
+              </span>
+            </div>
+            <p className="w-[320px] h-[48px] text-[16px] leading-[24px] font-normal mt-[32px]">
+              Top learning experiences that create more talent in the world.
+            </p>
+          </nav>
+
+          <nav className="flex items-center flex-col m-[32px]">
+            <ul className="flex flex-col items-start p-0 m-0">
+              <li className="list-none mb-4 text-[#98A2B3]  font-inter  text-[14px] font-[600] leading-5 tracking-wide">
+                Product
+              </li>
+              <li className="list-none mb-[6px] mt-[6px]">Overview</li>
+              <li className="list-none mb-[6px] mt-[6px]">Features</li>
+              <li className="list-none mb-[6px] mt-[6px]">Solutions</li>
+              <li className="list-none mb-[6px] mt-[6px]">Tutorials</li>
+              <li className="list-none mb-[6px] mt-[6px]">Pricing</li>
+            </ul>
+          </nav>
+
+          <nav className="flex items-center flex-col m-[32px]">
+            <ul className="flex flex-col items-start p-0 m-0">
+              <li className="list-none mb-4 text-[#98A2B3]  font-inter  text-[14px] font-[600] leading-5 tracking-wide">
+                Company
+              </li>
+              <li className="list-none mb-[6px] mt-[6px]">About us</li>
+              <li className="list-none mb-[6px] mt-[6px]">Features</li>
+              <li className="list-none mb-[6px] mt-[6px]">Careers</li>
+            </ul>
+          </nav>
+
+          <nav className="flex items-center flex-col m-[32px]">
+            <ul className="flex flex-col items-start p-0 m-0">
+              <li className="list-none mb-4 text-[#98A2B3]  font-inter  text-[14px] font-[600] leading-5 tracking-wide">
+                Social
+              </li>
+              <li className="list-none mb-[6px] mt-[6px]">Facebook</li>
+              <li className="list-none mb-[6px] mt-[6px]">Twitter</li>
+              <li className="list-none mb-[6px] mt-[6px]">LinkedIn</li>
+            </ul>
+          </nav>
+
+          <nav className="flex items-center flex-col m-[32px]">
+            <ul className="flex flex-col items-start p-0 m-0">
+              <li className="list-none mb-4 text-[#98A2B3]  font-inter  text-[14px] font-[600] leading-5 tracking-wide">
+                Legal
+              </li>
+              <li className="list-none mb-[6px] mt-[6px]">Terms</li>
+              <li className="list-none mb-[6px] mt-[6px]">Privacy</li>
+              <li className="list-none mb-[6px] mt-[6px]">Contact</li>
+            </ul>
+          </nav>
+        </div>
+
+        <div className="p-[32px]">
+          <div className="flex items-center flex-row justify-between  m-[32px]">
+            <span className="text-[16px] leading-6 font-normal text-[#98A2B3]">
+              © 2023 Easy Life. All rights reserved.Created by Luis de Água
+              Rosada (luisrosada@mail.ru)
+            </span>
+            <div className="flex ">
+              <img className="mr-3" src={facebookIcon} alt="" />
+              <img className="mr-3" src={xIcon} alt="" />
+              <img className="mr-3" src={inIcon} alt="" />
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 };
