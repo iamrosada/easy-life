@@ -1,6 +1,7 @@
 import Missing from '@/pages/404';
 import HomeComponent from '@/pages/Home/home';
 import Background from '@/shared/UI/Background/Background';
+import { CreateAccountComponent } from '@/shared/UI/CreateAccount/CreateAccount';
 import SigningComponent from '@/shared/UI/Signin/Signin';
 import theme from '@/styles/global-style';
 import { ChakraProvider } from '@chakra-ui/react';
@@ -13,11 +14,23 @@ export default function Router() {
         <Route index path="/" element={<HomeComponent />} />
         <Route
           index
-          path="/create-account"
+          path="login"
           element={
             <Background>
               <ChakraProvider theme={theme}>
                 <SigningComponent />
+              </ChakraProvider>
+            </Background>
+          }
+        />
+
+        <Route
+          index
+          path="/create-account"
+          element={
+            <Background>
+              <ChakraProvider theme={theme}>
+                <CreateAccountComponent />
               </ChakraProvider>
             </Background>
           }

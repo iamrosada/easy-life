@@ -23,9 +23,9 @@ export default function SigningComponent() {
         <Flex flex={1} className="bg-[#000]">
           {/* <Image alt={'Login Image'} bg-[#E9D7FE] objectFit={'cover'} src={footerIcon} /> */}
           <div className="relative  flex items-center">
-            <div className="w-[465.72px] absolute top-[20%] left-[76%] h-[465.72px] rounded-full border-[100.76px] border-solid border-[#fff] mx-auto my-16"></div>
+            <div className="w-[465.72px] absolute top-[20%]  left-[76%] h-[465.72px] rounded-full border-[100.76px] border-solid border-[#fff] mx-auto my-16"></div>
 
-            <div className="w-[465.72px] h-[465.72px] mr-4 z-10 right-[1%] rounded-full border-[100.76px] border-solid border-purple-500 mx-auto my-16"></div>
+            <div className="w-[465.72px] h-[465.72px] ml-[3rem] z-10 right-[1%] rounded-full border-[100.76px] border-solid border-purple-500 mx-auto my-16"></div>
           </div>
         </Flex>
       </Stack>

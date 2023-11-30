@@ -43,6 +43,7 @@ export const TopNavbar = () => {
             <div>
               <button
                 type="button"
+                onClick={() => handleNavigate('/login')}
                 className="text-black  text-base	 font-medium leading-6 border-none bg-white"
               >
                 Sign in
@@ -50,8 +51,8 @@ export const TopNavbar = () => {
             </div>
             <div>
               <button
-                onClick={() => handleNavigate('/create-account')}
                 type="button"
+                onClick={() => handleNavigate('/create-account')}
                 className="items-center  font-inter text-sm font-semibold leading-5 tracking-normal text-left text-white border-[3px] border-solid bg-[#7F56D9] border-[#E9D7FE] w-[150px] h-[40px] p-[10px 16px] border border-gray-300 rounded-md gap-8"
               >
                 Create free account
