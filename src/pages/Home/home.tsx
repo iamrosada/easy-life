@@ -6,6 +6,7 @@ import SpeakComponent, {
   OuServiceComponent,
   UserExperience,
 } from '../../shared/UI/Speak/Speak';
+import { PrimaryFeatures } from '@/shared/UI/Primary/PrimaryFeatures';
 
 function HomeComponent() {
   return (
@@ -18,6 +19,7 @@ function HomeComponent() {
         <SpeakComponent />
         <OuServiceComponent />
         <UserExperience />
+        <PrimaryFeatures />
       </main>
       <footer>
         <FooterComponent />
