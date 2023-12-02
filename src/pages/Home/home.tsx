@@ -9,6 +9,7 @@ import SpeakComponent, {
 import { PrimaryFeatures } from '@/shared/UI/Primary/PrimaryFeatures';
 import { Pricing } from '@/shared/UI/Primary/Pricing';
 import { Faqs } from '@/shared/UI/Primary/Faqs';
+import { Teachers } from '@/shared/UI/Primary/Teachers';
 
 function HomeComponent() {
   return (
@@ -22,7 +23,7 @@ function HomeComponent() {
         <OuServiceComponent />
         <UserExperience />
         <PrimaryFeatures />
-
+        <Teachers />
         <Pricing />
         <Faqs />
       </main>
