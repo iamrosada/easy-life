@@ -1,6 +1,8 @@
 import Missing from '@/pages/404';
 import HomeComponent from '@/pages/Home/home';
 import Background from '@/shared/UI/Background/Background';
+import ChatComponent from '@/shared/UI/Chat';
+// import ChatComponent from '@/shared/UI/Chat';
 import { CreateAccountComponent } from '@/shared/UI/CreateAccount/CreateAccount';
 import SigningComponent from '@/shared/UI/Signin/Signin';
 import theme from '@/styles/global-style';
@@ -19,6 +21,18 @@ export default function Router() {
             <Background>
               <ChakraProvider theme={theme}>
                 <SigningComponent />
+              </ChakraProvider>
+            </Background>
+          }
+        />
+
+        <Route
+          index
+          path="/dash"
+          element={
+            <Background>
+              <ChakraProvider theme={theme}>
+                <ChatComponent />
               </ChakraProvider>
             </Background>
           }

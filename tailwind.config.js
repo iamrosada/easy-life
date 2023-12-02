@@ -1,7 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 
 export default {
-  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  content: [
+    './index.html',
+    './src/**/*.{js,ts,jsx,tsx}',
+    './src/shared/UI/**/*.{js,ts,jsx,tsx}',
+  ],
   important: '#root',
   corePlugins: {
     // Remove the Tailwind CSS preflight styles so it can use Material UI's preflight instead (CssBaseline).
@@ -91,10 +95,13 @@ export default {
       fontFamily: {
         sans: ['Public Sans', 'sans-serif'],
       },
+      height: {
+        128: '12rem',
+      },
     },
   },
   plugins: [
     // eslint-disable-next-line no-undef
-    // require('@tailwindcss/forms'),
+    require('@tailwindcss/forms'),
   ],
 };
