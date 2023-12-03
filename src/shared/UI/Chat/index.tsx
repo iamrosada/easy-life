@@ -4,7 +4,7 @@ import SimpleSidebar from './Right';
 export default function ChatComponent() {
   return (
     <div>
-      <WithSubnavigation />;
+      <WithSubnavigation />
       <SimpleSidebar />
     </div>
   );

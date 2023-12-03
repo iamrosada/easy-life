@@ -15,14 +15,22 @@ import {
 export default function SimpleSidebar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
-    <Box minH="100vh" bg={useColorModeValue('gray.100', 'gray.900')}>
-      <SidebarContent
-        onClose={() => onClose}
-        display={{ base: 'none', md: 'block' }}
-      />
+    <Box
+      // minH="100vh"
+      className="bg-red-500"
+      bg={useColorModeValue('gray.100', 'gray.900')}
+    >
+      <Box className="flex flex-row flex-shrink-0">
+        <SidebarContent
+          className="fixed w-[321px] h-[979px] top-0 right-0 bg-[#f6f6f6] rounded-[0px_0px_15px_0px] border-[1.5px] border-solid border-[#eae9e9]"
+          onClose={() => onClose}
+          display={{ base: 'none', md: 'block' }}
+        />
+      </Box>
+
       <Drawer
         isOpen={isOpen}
-        placement="left"
+        placement="right"
         onClose={onClose}
         returnFocusOnClose={false}
         onOverlayClick={onClose}
@@ -63,7 +71,6 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
         <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
       </Flex>
 
-      {/* <NavItem>aaaa</NavItem> */}
       <div>ddd</div>
     </Box>
   );
