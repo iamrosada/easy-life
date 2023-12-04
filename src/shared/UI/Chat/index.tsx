@@ -8,8 +8,8 @@ export default function ChatComponent() {
       <header>
         <WithSubnavigation />
       </header>
-      <main className="flex  h-[95.2vh] bg-amber-700  justify-between">
-        <div className="flex  justify-end items-end w-[100vw] bg-blue-500">
+      <main className="flex  h-[95.2vh] bg-purple-500  justify-between">
+        <div className="flex  justify-end items-end w-[100vw] bg-amber-700">
           <VideoHostCall />
         </div>
         <div className="flex   justify-end items-end">

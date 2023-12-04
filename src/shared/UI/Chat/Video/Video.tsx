@@ -161,8 +161,63 @@ export const VideoHostCall = () => {
           </Box>
         </Box>
       </Box>
-      <Box className="w-[403px] h-[175px] rounded-[15px] bg-black mb-1">
-        child
+      <Box className="flex">
+        <Box className="w-[303px] h-[17vh] mr-10 rounded-[15px] bg-white mb-1">
+          <Box className="flex  items-center h-[17vh]">
+            <Box className="mt-auto">
+              <Box className="flex justify-between items-center p-2 w-[300px]">
+                <Box className=" flex justify-center items-center bg-black w-[149.8px] h-[29.33px] p-[8.17px 29.4px 8.17px 29.4px] rounded-[89.83px] gap-[16.33px]">
+                  Adam Joseph
+                </Box>
+                <Box className="px-4 py-2 bg-[#0F0E0E] h-[60px] w-[60px] flex  rounded-full">
+                  <svg
+                    width="38"
+                    height="38"
+                    viewBox="0 0 38 38"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M5 11L5 28"
+                      stroke="white"
+                      stroke-width="2.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M12 13L12 26"
+                      stroke="white"
+                      stroke-width="2.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M19 5.14583V32.8542"
+                      stroke="white"
+                      stroke-width="2.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M26 13V26"
+                      stroke="white"
+                      stroke-width="2.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M33 11L33 28"
+                      stroke="white"
+                      stroke-width="2.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </Box>
+              </Box>
+            </Box>
+          </Box>
+        </Box>
       </Box>
     </Box>
   );
