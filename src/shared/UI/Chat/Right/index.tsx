@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   IconButton,
@@ -6,8 +7,6 @@ import {
   useColorModeValue,
   Text,
   Image,
-  useDisclosure,
-  BoxProps,
   FlexProps,
 } from '@chakra-ui/react';
 import { Disclosure } from '@headlessui/react';
@@ -19,34 +18,22 @@ import videoNotMutedIcon from '../img/video-not-muted.svg';
 import muteAudioIcon from '../img/mute-audio.svg';
 
 export default function SimpleSidebar() {
-  const { isOpen, onOpen, onClose } = useDisclosure();
   return (
-    <Box
-      // minH="100vh"
-      className="bg-red-500 "
-      bg={useColorModeValue('gray.100', 'gray.900')}
-    >
-      <Box className="flex flex-row justify-end">
-        <SidebarContent onClose={() => onClose} />
-      </Box>
-
-      {/* mobilenav */}
-      <MobileNav display={{ base: 'flex', md: 'none' }} onOpen={onOpen} />
-      <Box ml={{ base: 0, md: 60 }} p="4">
-        {/* Content */}
-      </Box>
+    <Box className="bg-red-500">
+      <SidebarContent />
     </Box>
   );
 }
-
+//className="fixed px-4 pt-16 h-[979px] w-[422px] mt-[111px] top-0 "
+//className="mx-auto w-full max-w-md rounded-2xl bg-white p-2"
 const SidebarContent = () => {
   return (
-    <div className="fixed px-4 pt-16 h-[979px] w-[422px] mt-[111px] top-0 ">
-      <div className="mx-auto w-full max-w-md rounded-2xl bg-white p-2">
+    <div className="w-[25rem] ">
+      <div className="mx-auto  max-w-md  bg-white">
         <Disclosure>
           {({ open }) => (
             <>
-              <Disclosure.Button className="flex w-full justify-between rounded-lg bg-purple-100 px-4 py-2 text-left text-sm font-medium text-purple-900 hover:bg-purple-200 focus:outline-none focus-visible:ring focus-visible:ring-purple-500/75">
+              <Disclosure.Button className="flex w-full justify-between  bg-purple-100 px-4 py-2 text-left text-sm font-medium text-purple-900 hover:bg-purple-200 focus:outline-none focus-visible:ring focus-visible:ring-purple-500/75">
                 <span className="w-[106.252px] h-[33px] flex-shrink-0 font-[600] text-[18px] leading-[32.667px]">
                   Participants
                 </span>
@@ -65,7 +52,7 @@ const SidebarContent = () => {
         <Disclosure as="div" className="mt-2">
           {({ open }) => (
             <>
-              <Disclosure.Button className="flex w-full justify-between rounded-lg bg-purple-100 px-4 py-2 text-left text-sm font-medium text-purple-900 hover:bg-purple-200 focus:outline-none focus-visible:ring focus-visible:ring-purple-500/75">
+              <Disclosure.Button className="flex w-full justify-between  bg-purple-100 px-4 py-2 text-left text-sm font-medium text-purple-900 hover:bg-purple-200 focus:outline-none focus-visible:ring focus-visible:ring-purple-500/75">
                 <span className="w-[106.252px] h-[33px] flex-shrink-0 font-[600] text-[18px] leading-[32.667px]">
                   Chat
                 </span>

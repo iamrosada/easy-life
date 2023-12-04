@@ -18,7 +18,7 @@ export default function WithSubnavigation() {
     <Box>
       <Flex
         bg={useColorModeValue('white', 'gray.800')}
-        className="fixed z-10 w-[100vw] h-[115px] bg-white border-t-[1.5px] [border-top-style:solid] border-b-[1.5px] [border-bottom-style:solid] border-l-[1.5px] [border-left-style:solid] border-[#d9d9d94a]"
+        className="fixed z-10 w-[100vw] h-[65px] bg-white border-t-[1.5px] [border-top-style:solid] border-b-[1.5px] [border-bottom-style:solid] border-l-[1.5px] [border-left-style:solid] border-[#d9d9d94a]"
         color={useColorModeValue('gray.600', 'white')}
         // minH={'60px'}
         // py={{ base: 2 }}
@@ -31,13 +31,13 @@ export default function WithSubnavigation() {
         <Flex className="flex flex-row justify-between w-[100vw]">
           <DesktopNav />
 
-          <Box className="flex rounded-[83px] mr-10 p-[30px] items-center justify-between bg-[#F6F6F6] w-[366px] h-[80px]">
+          <Box className="flex rounded-[83px] m-2  p-[30px] items-center justify-between bg-[#F6F6F6] w-[360px] h-[6px]">
             <Box className="flex">
-              <Box className="border-[3px] border-white rounded-full">
+              <Box className="border-[3px] border-white rounded-[50px] h-9">
                 <Image
                   borderRadius="full"
                   boxSize="20px"
-                  className="w-12 h-12"
+                  className="w-9 h-9"
                   src="https://bit.ly/dan-abramov"
                   alt="Dan Abramov"
                 />
