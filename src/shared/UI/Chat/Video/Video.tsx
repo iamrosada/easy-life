@@ -3,7 +3,7 @@ import { Box, Text } from '@chakra-ui/react';
 export const VideoHostCall = () => {
   return (
     <Box className="pt-2">
-      <Box className="w-[74vw] h-[700px] mr-4 rounded-[15px] pt-2 bg-white mb-2">
+      <Box className="w-[1230px] h-[590px] ml-4 rounded-[15px] pt-2 bg-white mb-2">
         <Box className="flex flex-row justify-between p-1">
           <Box className="flex w-max-[30px] ">
             <Text className="text-black mt-[13px] ml-[49px] h-[33px] w-[85px] font-medium text-[20px] leading-[32.67px]">
@@ -66,7 +66,7 @@ export const VideoHostCall = () => {
               </svg>
             </Box>
           </Box>
-          <Box className="bg-[#0F0E0E] h-[60px] w-[60px] flex items-center justify-center rounded-full">
+          <Box className="bg-[#7F56D9] h-[60px] w-[60px] flex items-center justify-center rounded-full">
             <svg
               width="28"
               height="28"
@@ -106,13 +106,13 @@ export const VideoHostCall = () => {
           </Box>
         </Box>
 
-        <Box className="h-[60vh] flex  items-center">
+        <Box className="h-[57vh] flex  items-center">
           <Box className="mt-auto">
-            <Box className="flex justify-between items-center p-2 w-[74vw]">
-              <Box className=" flex justify-center items-center bg-black w-[189.8px] h-[49.33px] p-[8.17px 29.4px 8.17px 29.4px] rounded-[89.83px] gap-[16.33px]">
+            <Box className="flex justify-between items-center p-2 w-[1230px] ">
+              <Box className=" text-white flex justify-center items-center bg-[#7F56D9] w-[189.8px] h-[49.33px] p-[8.17px 29.4px 8.17px 29.4px] rounded-[89.83px] gap-[16.33px]">
                 Adam Joseph
               </Box>
-              <Box className="px-4 py-2 bg-[#0F0E0E] h-[60px] w-[60px] flex  rounded-full">
+              <Box className="px-4 py-2 bg-[#7F56D9] h-[60px] w-[60px] flex  rounded-full">
                 <svg
                   width="38"
                   height="38"
@@ -161,15 +161,15 @@ export const VideoHostCall = () => {
           </Box>
         </Box>
       </Box>
-      <Box className="flex">
+      <Box className="flex ml-4">
         <Box className="w-[303px] h-[17vh] mr-10 rounded-[15px] bg-white mb-1">
           <Box className="flex  items-center h-[17vh]">
             <Box className="mt-auto">
               <Box className="flex justify-between items-center p-2 w-[300px]">
-                <Box className=" flex justify-center items-center bg-black w-[149.8px] h-[29.33px] p-[8.17px 29.4px 8.17px 29.4px] rounded-[89.83px] gap-[16.33px]">
+                <Box className="text-white flex justify-center items-center bg-[#7F56D9] w-[149.8px] h-[29.33px] p-[8.17px 29.4px 8.17px 29.4px] rounded-[89.83px] gap-[16.33px]">
                   Adam Joseph
                 </Box>
-                <Box className="px-4 py-2 bg-[#0F0E0E] h-[60px] w-[60px] flex  rounded-full">
+                <Box className="px-4 py-2 bg-[#7F56D9] h-[60px] w-[60px] flex  rounded-full">
                   <svg
                     width="38"
                     height="38"

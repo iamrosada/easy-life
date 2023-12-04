@@ -30,11 +30,9 @@ export default function Router() {
           index
           path="/dash"
           element={
-            <Background>
-              <ChakraProvider theme={theme}>
-                <ChatComponent />
-              </ChakraProvider>
-            </Background>
+            <ChakraProvider theme={theme}>
+              <ChatComponent />
+            </ChakraProvider>
           }
         />
 

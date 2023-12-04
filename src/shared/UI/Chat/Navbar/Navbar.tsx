@@ -17,12 +17,8 @@ export default function WithSubnavigation() {
   return (
     <Box>
       <Flex
-        bg={useColorModeValue('white', 'gray.800')}
-        className="fixed z-10 w-[100vw] h-[65px] bg-white border-t-[1.5px] [border-top-style:solid] border-b-[1.5px] [border-bottom-style:solid] border-l-[1.5px] [border-left-style:solid] border-[#d9d9d94a]"
+        className="w-[100vw] h-[65px] bg-white border-t-[1.5px] [border-top-style:solid] border-b-[1.5px] [border-bottom-style:solid] border-l-[1.5px] [border-left-style:solid] border-[#d9d9d94a]"
         color={useColorModeValue('gray.600', 'white')}
-        // minH={'60px'}
-        // py={{ base: 2 }}
-        // px={{ base: 4 }}
         borderBottom={2}
         borderStyle={'solid'}
         borderColor={useColorModeValue('gray.200', 'gray.900')}

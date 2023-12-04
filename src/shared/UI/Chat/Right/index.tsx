@@ -19,7 +19,7 @@ import muteAudioIcon from '../img/mute-audio.svg';
 
 export default function SimpleSidebar() {
   return (
-    <Box className="bg-red-500">
+    <Box className="bg-[#25293B]">
       <SidebarContent />
     </Box>
   );
@@ -28,8 +28,8 @@ export default function SimpleSidebar() {
 //className="mx-auto w-full max-w-md rounded-2xl bg-white p-2"
 const SidebarContent = () => {
   return (
-    <div className="w-[25rem] ">
-      <div className="mx-auto  max-w-md  bg-white">
+    <div className="w-[422px]">
+      <div className="">
         <Disclosure>
           {({ open }) => (
             <>
@@ -110,7 +110,7 @@ const ParticipantComponents = () => {
         return (
           <Box
             key={participant.id}
-            className="flex rounded-[83px]  p-[30px] mb-[15px] items-center justify-between bg-[#F6F6F6] w-[351px] h-[69px]"
+            className="flex rounded-[83px]  items-center justify-between"
           >
             <Box className="flex items-center justify-center">
               <Image
@@ -162,11 +162,11 @@ const ChatForParticipants = () => {
           />
         </Box>
 
-        <Box className="flex flex-col rounded-[10px] bg-white justify-items-start">
+        <Box className="p-2 m-1 flex flex-col rounded-[10px] bg-white justify-items-start">
           <Text className="font-inter text-[#AFAFAF] text-[10px] leading-[28.167px] font-medium">
             Kathryn Murphy
           </Text>
-          <Text className="font-inter text-[#25293B] text-[15.301px] leading-[29.401px] font-normal">
+          <Text className=" font-inter text-[#25293B] text-[15.301px] leading-[29.401px] font-normal">
             Good afternoon, everyone.
           </Text>
         </Box>
