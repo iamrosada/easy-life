@@ -40,7 +40,7 @@ const SidebarContent = () => {
                 <ChevronUpIcon
                   className={`${
                     open ? 'rotate-180 transform' : ''
-                  } h-5 w-5 text-purple-500`}
+                  } h-5 w-5 text-blue-500`}
                 />
               </Disclosure.Button>
               <Disclosure.Panel className="px-4 pb-2 pt-4 text-sm text-gray-500">
@@ -59,7 +59,7 @@ const SidebarContent = () => {
                 <ChevronUpIcon
                   className={`${
                     open ? 'rotate-180 transform' : ''
-                  } h-5 w-5 text-purple-500`}
+                  } h-5 w-5 text-blue-500`}
                 />
               </Disclosure.Button>
               <Disclosure.Panel className="px-4 pb-2 pt-4 text-sm text-gray-500">
