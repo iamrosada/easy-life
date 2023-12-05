@@ -3,7 +3,20 @@ import { Box, Text } from '@chakra-ui/react';
 export const VideoHostCall = () => {
   return (
     <Box className="pt-2">
-      <Box className="w-[1230px] h-[590px] ml-4 rounded-[15px] pt-2 bg-white mb-2">
+      <iframe
+        width="100%"
+        height="590px"
+        src="https://www.youtube.com/embed/cSA9atJKVUc?si=NuqJB_MlN4Ag5_Tl"
+        title="Video Title"
+        frameBorder="0"
+        allowFullScreen
+        className="w-[1230px] h-[590px] ml-4 rounded-[15px] pt-2 bg-white mb-2"
+      >
+        {/* <Box className="relative overflow-hidden bg-gray-500 rounded-md">
+          <iframe
+
+          ></iframe>
+        </Box> */}
         <Box className="flex flex-row justify-between p-1">
           <Box className="flex w-max-[30px] ">
             <Text className="text-black mt-[13px] ml-[49px] h-[33px] w-[85px] font-medium text-[20px] leading-[32.67px]">
@@ -112,6 +125,7 @@ export const VideoHostCall = () => {
               <Box className=" text-white flex justify-center items-center bg-[#7F56D9] w-[189.8px] h-[49.33px] p-[8.17px 29.4px 8.17px 29.4px] rounded-[89.83px] gap-[16.33px]">
                 Adam Joseph
               </Box>
+
               <Box className="px-4 py-2 bg-[#7F56D9] h-[60px] w-[60px] flex  rounded-full">
                 <svg
                   width="38"
@@ -160,7 +174,8 @@ export const VideoHostCall = () => {
             </Box>
           </Box>
         </Box>
-      </Box>
+      </iframe>
+
       <Box className="flex ml-4">
         <Box className="w-[303px] h-[17vh] mr-10 rounded-[15px] bg-white mb-1">
           <Box className="flex  items-center h-[17vh]">

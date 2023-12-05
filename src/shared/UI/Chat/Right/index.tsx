@@ -19,7 +19,7 @@ import muteAudioIcon from '../img/mute-audio.svg';
 
 export default function SimpleSidebar() {
   return (
-    <Box className="bg-[#25293B]">
+    <Box className="bg-[#DFEBFF]">
       <SidebarContent />
     </Box>
   );

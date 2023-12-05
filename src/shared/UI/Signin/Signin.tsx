@@ -203,7 +203,7 @@ export function AutoComplete() {
       </div>
 
       <button
-        onClick={() => handleNavigate('/')}
+        onClick={() => handleNavigate('/home')}
         className="inline-block px-7 py-3 mt-5  h-[3.5rem] w-full bg-[#7F56D9] border-[#E9D7FE] border-[3px] border-solid text-white font-inter text-sm font-semibold leading-5 uppercase rounded shadow-md hover:bg-[#7F56D9] hover:shadow-lg focus:bg-[#7F56D9] focus:shadow-lg focus:outline-none focus:ring-0 active:bg-[#7F56D9] active:shadow-lg transition duration-150 ease-in-out"
       >
         Entrar

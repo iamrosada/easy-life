@@ -4,6 +4,7 @@ import Background from '@/shared/UI/Background/Background';
 import ChatComponent from '@/shared/UI/Chat';
 // import ChatComponent from '@/shared/UI/Chat';
 import { CreateAccountComponent } from '@/shared/UI/CreateAccount/CreateAccount';
+import Dashboard from '@/shared/UI/Dashboard';
 import SigningComponent from '@/shared/UI/Signin/Signin';
 import theme from '@/styles/global-style';
 import { ChakraProvider } from '@chakra-ui/react';
@@ -32,6 +33,16 @@ export default function Router() {
           element={
             <ChakraProvider theme={theme}>
               <ChatComponent />
+            </ChakraProvider>
+          }
+        />
+
+        <Route
+          index
+          path="/home"
+          element={
+            <ChakraProvider theme={theme}>
+              <Dashboard />
             </ChakraProvider>
           }
         />

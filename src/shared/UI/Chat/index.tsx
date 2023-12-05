@@ -8,7 +8,7 @@ export default function ChatComponent() {
     <section className="flex fixed flex-col">
       <WithSubnavigation />
 
-      <div className="flex flex-row justify-between bg-[#F6F6F6] mt-1">
+      <div className="flex flex-row justify-between bg-[#DFEBFF]  mt-1">
         <VideoHostCall />
         <SimpleSidebar />
       </div>

@@ -10,7 +10,6 @@ import {
   // PhoneIcon,
 } from '@heroicons/react/20/solid';
 import {
-  Heading,
   CardBody,
   Stack,
   Card,
@@ -32,6 +31,11 @@ import {
   StepTitle,
   Stepper,
   useSteps,
+  Avatar,
+  Badge,
+  Flex,
+  Heading,
+  StackDivider,
 } from '@chakra-ui/react';
 
 interface StudentModel {
@@ -267,17 +271,21 @@ const Perfil = () => {
       <Tabs isLazy>
         <TabList>
           <Tab className="text-[20px] font-bold">Biografia</Tab>
-          {/* <Tab className="text-[20px] font-bold">Estudantes</Tab> */}
+          <Tab className="text-[20px] font-bold">Professores</Tab>
           <Tab className="text-[20px] font-bold">Desempenho</Tab>
         </TabList>
         <TabPanels>
           {/* initially mounted */}
           <TabPanel>
-            <p>one!</p>
+            <Biografia />
+            {/* <p>one!</p> */}
+          </TabPanel>
+          <TabPanel>
+            <Professores />
           </TabPanel>
           {/* initially not mounted */}
           <TabPanel>
-            <Example />
+            <Desempenho />
           </TabPanel>
         </TabPanels>
       </Tabs>
@@ -291,7 +299,7 @@ const steps = [
   { title: 'Compreensao', description: '23/02/2024' },
 ];
 
-function Example() {
+function Desempenho() {
   const { activeStep } = useSteps({
     index: 1,
     count: steps.length,
@@ -318,5 +326,81 @@ function Example() {
         </Step>
       ))}
     </Stepper>
+  );
+}
+
+function Professores() {
+  return (
+    <>
+      <Flex className="mb-4">
+        <Avatar src="https://bit.ly/sage-adebayo" />
+        <Box ml="3">
+          <Text fontWeight="bold">
+            Rosada
+            <Badge ml="1" colorScheme="green">
+              New
+            </Badge>
+          </Text>
+          <Text fontSize="sm">Professor de : Russo</Text>
+        </Box>
+      </Flex>
+
+      <Flex>
+        <Avatar src="https://bit.ly/sage-adebayo" />
+        <Box ml="3">
+          <Text fontWeight="bold">Evanilson</Text>
+          <Text fontSize="sm">Professor de : Espanhol</Text>
+        </Box>
+      </Flex>
+    </>
+  );
+}
+
+function Biografia() {
+  return (
+    <>
+      <Card>
+        <CardHeader>
+          <Heading size="md">Angola</Heading>
+        </CardHeader>
+
+        <CardBody>
+          <Stack divider={<StackDivider />} spacing="4">
+            <Box>
+              <Heading size="xs" textTransform="uppercase">
+                Idioma
+              </Heading>
+              <Text pt="2" fontSize="sm">
+                Portugues
+              </Text>
+            </Box>
+            <Box>
+              <Heading size="xs" textTransform="uppercase">
+                Idade
+              </Heading>
+              <Text pt="2" fontSize="sm">
+                23{' '}
+              </Text>
+            </Box>
+            <Box>
+              <Heading size="xs" textTransform="uppercase">
+                Objetivo
+              </Heading>
+              <Text pt="2" fontSize="sm">
+                Aprender para ter trabalho na gringa
+              </Text>
+            </Box>
+            <Box>
+              <Heading size="xs" textTransform="uppercase">
+                Outros idiomas
+              </Heading>
+              <Text pt="2" fontSize="sm">
+                Russo, Grego, Espanhol
+              </Text>
+            </Box>
+          </Stack>
+        </CardBody>
+      </Card>
+    </>
   );
 }
