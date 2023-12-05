@@ -286,9 +286,9 @@ const Perfil = () => {
 };
 
 const steps = [
-  { title: 'First', description: 'Contact Info' },
-  { title: 'Second', description: 'Date & Time' },
-  { title: 'Third', description: 'Select Rooms' },
+  { title: 'Pronuncia', description: '10/12/2023' },
+  { title: 'Escrever', description: '24/12/2023' },
+  { title: 'Compreensao', description: '23/02/2024' },
 ];
 
 function Example() {
