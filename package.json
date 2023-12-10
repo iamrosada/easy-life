@@ -19,6 +19,7 @@
     "@mui/icons-material": "^5.14.16",
     "@mui/material": "^5.14.16",
     "@tailwindcss/forms": "^0.5.7",
+    "axios": "^1.6.2",
     "faker": "^5.5.3",
     "i18next": "^23.6.0",
     "i18next-browser-languagedetector": "^7.1.0",
