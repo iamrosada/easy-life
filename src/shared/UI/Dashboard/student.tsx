@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   Card,
   CardBody,
@@ -99,9 +99,6 @@ const SearchStudent: React.FC = () => {
           student.name.toLowerCase().includes(search.toLowerCase()) ||
           student.full_name.toLowerCase().includes(search) ||
           student.course_language.toLowerCase().includes(search)
-        // student.email.includes(search.toLowerCase()) ||
-        // student.address.includes(search) ||
-        // student.nameCourse.includes(search)
       )
     );
   }, [search, dataArray]);
@@ -112,68 +109,48 @@ const SearchStudent: React.FC = () => {
   };
 
   return (
-    <div className="flex h-full">
-      {selectedStudent ? (
-        <Perfil student={selectedStudent} />
-      ) : (
-        <div className="flex min-w-0 flex-1 flex-col overflow-hidden">
-          <div className="relative z-0 flex flex-1 overflow-hidden">
-            <aside className="hidden w-96 flex-shrink-0 border-r border-gray-200 xl:order-first xl:flex xl:flex-col">
-              <div className="px-6 pt-6 pb-4">
-                <div className="mt-6 flex space-x-4">
-                  <div className="min-w-0 flex-1">
-                    <label htmlFor="search" className="sr-only">
-                      Search
-                    </label>
-                    <div className="relative rounded-md shadow-sm">
-                      <input
-                        type="search"
-                        name="search"
-                        placeholder="search student"
-                        id="search"
-                        className="w-full w-[17rem] h-[4rem] rounded-md border border-gray-300 bg-white py-2 pl-3 pr-14 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm"
-                        onChange={e => {
-                          setSearch(e.target.value);
-                        }}
-                      />
-                    </div>
-                  </div>
-                  <button
-                    type="button"
-                    // onClick={() => openSearchModalFn(true)}
-                    className="inline-flex justify-center rounded-md border border-gray-300 bg-white px-3.5 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none  focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500  focus:ring-offset-2"
-                  >
-                    <FunnelIcon
-                      className="h-5 w-5 text-gray-400"
-                      aria-hidden="true"
-                    />
-                  </button>
-                </div>
-              </div>
-              <nav
-                className="min-h-0 flex-1 overflow-y-auto"
-                aria-label="Directory"
-              >
-                <div className="relative">
-                  <ul
-                    role="list"
-                    className="relative z-0 divide-y divide-gray-200"
-                  >
-                    {filteredStudent.map(person => (
-                      <StudentListItem
-                        key={person.id}
-                        person={person}
-                        onSelect={() => handleStudentSelect(person)}
-                      />
-                    ))}
-                  </ul>
-                </div>
-              </nav>
-            </aside>
-          </div>
-        </div>
-      )}
-    </div>
+    <Flex h="100%">
+      <Box flex="1" overflow="hidden">
+        {/* Left Side - Student Profile */}
+        {selectedStudent ? <Perfil student={selectedStudent} /> : null}
+      </Box>
+
+      <Box w="96" borderRight="1px" borderColor="gray.200">
+        {/* Right Side - Student List */}
+        <Flex direction="column" h="100%" p="6">
+          <Flex spaceX="4" mb="4">
+            <Input
+              type="search"
+              name="search"
+              placeholder="Search student"
+              onChange={e => {
+                setSearch(e.target.value);
+              }}
+            />
+            <button
+              type="button"
+              className="inline-flex justify-center rounded-md border border-gray-300 bg-white px-3.5 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500  focus:ring-offset-2"
+            >
+              <FunnelIcon
+                className="h-5 w-5 text-gray-400"
+                aria-hidden="true"
+              />
+            </button>
+          </Flex>
+          <Box flex="1" overflowY="auto">
+            <ul role="list" className="divide-y divide-gray-200">
+              {filteredStudent.map(person => (
+                <StudentListItem
+                  key={person.id}
+                  person={person}
+                  onSelect={() => handleStudentSelect(person)}
+                />
+              ))}
+            </ul>
+          </Box>
+        </Flex>
+      </Box>
+    </Flex>
   );
 };
 

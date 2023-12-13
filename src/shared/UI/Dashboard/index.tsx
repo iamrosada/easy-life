@@ -8,6 +8,8 @@ import {
   TabPanels,
   Tabs,
 } from '@chakra-ui/react';
+import { useToast } from '@chakra-ui/react';
+
 import SearchStudent from './student';
 import {
   ChevronLeftIcon,
@@ -44,6 +46,8 @@ import {
 import { CheckCircleIcon } from '@heroicons/react/24/solid';
 
 import logoIcon from '../../../assets/logo.svg';
+import { ClassService } from '@/api/server-context/class-client';
+import { StudentService } from '@/api/server-context/client';
 export default function Dashboard() {
   return (
     <Box className="h-[100vh]">
@@ -78,7 +82,7 @@ export default function Dashboard() {
           {/* initially mounted */}
           <TabPanel>
             {/* <p>one!</p> */}
-            <Example2 />
+            <CreateClassComponent />
           </TabPanel>
           <TabPanel>
             {/* <p>one!</p> */}
@@ -381,16 +385,102 @@ const settings = [
   },
   {
     name: 'Private to Aula Members',
-    description: 'Only members of this Aulawould be able to access',
+    description: 'Only members of this Aula would be able to access',
   },
   {
     name: 'Private to you',
     description: 'You are the only one able to access this project',
   },
 ];
+interface StudentI {
+  id: string;
+  name: string;
+  full_name: string;
+  course_name: string;
+  email: string;
+  teachers_ids: string[];
+}
+function CreateClassComponent() {
+  const toast = useToast();
 
-function Example2() {
   const [selected, setSelected] = useState(settings[0]);
+  const [className, setClassName] = useState('');
+  const [classDescription, setClassDescription] = useState('');
+  // const [classTags, setClassTags] = useState('');
+  const [newStudentEmail, setNewStudentEmail] = useState('');
+  const existingStudents: StudentI[] =
+    JSON.parse(localStorage.getItem('chosenStudents') as any) || [];
+
+  const [students, setStudents] = useState<StudentI[]>(existingStudents);
+
+  console.log({ className, classDescription, newStudentEmail });
+  const handleSubmit = async (event: any) => {
+    event.preventDefault();
+
+    try {
+      // Call the API to create the class
+      const newClass = await ClassService.createClass({
+        name: className,
+        description: classDescription,
+        // tags: classTags.split(',').map(tag => tag.trim()), // Assuming tags are comma-separated
+        // students: students.map(student => student.email),
+      });
+
+      // Handle the response as needed (e.g., show success message, redirect, etc.)
+      console.log('Class created successfully:', newClass);
+    } catch (error) {
+      // Handle errors (e.g., show error message)
+      console.error('Error creating class:', error);
+    }
+  };
+
+  const addStudent = async () => {
+    console.log('chamou');
+    try {
+      // Call the API to create the class
+      const chooseEstudent = (await StudentService.getStudentByEmail(
+        newStudentEmail
+      )) as StudentI;
+
+      // Obtenha os alunos existentes do localStorage
+      const existingStudents: StudentI[] =
+        JSON.parse(localStorage.getItem('chosenStudents') as any) || [];
+
+      // Verifique se o estudante já está no array pelo ID
+      const studentExists = existingStudents.some(
+        student => student.id === chooseEstudent.id
+      );
+
+      if (!studentExists) {
+        // Adicione o novo aluno ao array existente
+        const updatedStudents = [...existingStudents, chooseEstudent];
+
+        // Armazene o array atualizado no localStorage
+        localStorage.setItem('chosenStudents', JSON.stringify(updatedStudents));
+
+        // Atualize o state, se necessário
+        setStudents([...students, chooseEstudent]);
+
+        // Handle the response as needed (e.g., show success message, redirect, etc.)
+        console.log('Student retrieved successfully:', chooseEstudent);
+      } else {
+        console.log('');
+        toast({
+          title: 'The Student was  already added ',
+          description:
+            'Student with the same ID already exists in localStorage.',
+          status: 'error',
+          colorScheme: 'red',
+          duration: 3000,
+          isClosable: true,
+        });
+        // Handle the case where the student with the same ID already exists
+      }
+    } catch (error) {
+      // Handle errors (e.g., show error message)
+      console.error('Error retrieving student:', error);
+    }
+  };
 
   return (
     <>
@@ -419,6 +509,8 @@ function Example2() {
                   type="text"
                   name="project-name"
                   id="project-name"
+                  value={className}
+                  onChange={e => setClassName(e.target.value)}
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-500 sm:text-sm sm:leading-6"
                   defaultValue="AulaNero"
                 />
@@ -437,6 +529,8 @@ function Example2() {
                   id="description"
                   name="description"
                   rows={3}
+                  // value={classDescription}
+                  onChange={e => setClassDescription(e.target.value)}
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-500 sm:text-sm sm:leading-6"
                   defaultValue={''}
                 />
@@ -458,6 +552,8 @@ function Example2() {
                   <div className="flex-grow">
                     <input
                       type="text"
+                      value={newStudentEmail}
+                      onChange={e => setNewStudentEmail(e.target.value)}
                       name="add-team-members"
                       id="add-team-members"
                       className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-500 sm:text-sm sm:leading-6"
@@ -468,6 +564,7 @@ function Example2() {
                   <span className="ml-3">
                     <button
                       type="button"
+                      onClick={addStudent}
                       className="inline-flex items-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
                     >
                       <PlusIcon
@@ -482,11 +579,11 @@ function Example2() {
 
               <div className="border-b border-gray-200">
                 <ul role="list" className="divide-y divide-gray-200">
-                  {team.map(person => (
-                    <li key={person.email} className="flex py-4">
+                  {students.map(person => (
+                    <li key={person.id} className="flex py-4">
                       <img
                         className="h-10 w-10 rounded-full"
-                        src={person.imageUrl}
+                        src="https://images.unsplash.com/photo-1513910367299-bce8d8a0ebf6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                         alt=""
                       />
                       <div className="ml-3 flex flex-col">
@@ -591,6 +688,7 @@ function Example2() {
               </button>
               <button
                 type="submit"
+                onClick={handleSubmit}
                 className="rounded-md bg-sky-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-sky-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500"
               >
                 Criar Aula

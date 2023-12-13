@@ -56,6 +56,16 @@ const StudentService = {
     }
   },
 
+  getStudentByEmail: async (email: string) => {
+    try {
+      const response = await api.get(`/students/email/${email}`);
+      return response.data;
+    } catch (error) {
+      console.error(`Error getting student with ID ${email}:`, error);
+      throw error;
+    }
+  },
+
   updateStudent: async (data: any) => {
     try {
       const response = await api.put('/students', data);
