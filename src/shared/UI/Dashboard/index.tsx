@@ -15,6 +15,7 @@ import {
   Text,
   CardFooter,
   Button,
+  Spinner,
 } from '@chakra-ui/react';
 import { useToast } from '@chakra-ui/react';
 
@@ -56,6 +57,7 @@ import { CheckCircleIcon } from '@heroicons/react/24/solid';
 import logoIcon from '../../../assets/logo.svg';
 import { ClassService } from '@/api/server-context/class-client';
 import { StudentService } from '@/api/server-context/client';
+import base from 'node_modules/@emotion/styled/types/base';
 export default function Dashboard() {
   return (
     <Box className="h-[100vh]">
@@ -138,57 +140,10 @@ export default function Dashboard() {
 //   fetchData();
 // }, []);
 
-const meetings = [
-  {
-    id: 1,
-    name: 'Leslie Alexander',
-    imageUrl:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-    start: '1:00 PM',
-    startDatetime: '2022-01-21T13:00',
-    end: '2:30 PM',
-    endDatetime: '2022-01-21T14:30',
-  },
-
-  {
-    id: 2,
-    name: 'Rosada',
-    imageUrl:
-      'https://images.unsplash.com/photo-1617901577643-6f96f918189a?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8bXVsaGVyZXMlMjBqb3ZlbnN8ZW58MHx8MHx8fDA%3D',
-    start: '1:00 PM',
-    startDatetime: '2022-01-21T13:00',
-    end: '2:30 PM',
-    endDatetime: '2022-01-21T14:30',
-  },
-
-  {
-    id: 3,
-    name: 'Ondina',
-    imageUrl:
-      'https://images.unsplash.com/photo-1617901577643-6f96f918189a?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8bXVsaGVyZXMlMjBqb3ZlbnN8ZW58MHx8MHx8fDA%3D',
-    start: '1:00 PM',
-    startDatetime: '2022-01-21T13:00',
-    end: '2:30 PM',
-    endDatetime: '2022-01-21T14:30',
-  },
-
-  {
-    id: 4,
-    name: 'Isabel',
-    imageUrl:
-      'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-    start: '1:00 PM',
-    startDatetime: '2022-01-21T13:00',
-    end: '2:30 PM',
-    endDatetime: '2022-01-21T14:30',
-  },
-];
-
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function classNames(...classes: any) {
   return classes.filter(Boolean).join(' ');
 }
-
 interface EventsI {
   id: string;
   title_of_lesson: string;
@@ -196,24 +151,20 @@ interface EventsI {
   teacher_id: string;
   students_ids: string[];
 }
-function Example() {
+const Example: React.FC = () => {
   const toast = useToast();
 
-  const existingStudents: StudentI[] =
-    JSON.parse(localStorage.getItem('chosenStudents') as any) || [];
-
-  const [students, setStudents] = useState<StudentI[]>(existingStudents);
-  const [getStudent, setGetStudent] = useState<StudentI>({});
+  const [students, setStudents] = useState<StudentI[]>([]);
+  const [getStudent, setGetStudent] = useState<StudentI | null>(null);
   const [events, setEvents] = useState<EventsI[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<unknown>('');
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const studentId = '19c0dd14-6f81-4622-b645-f04e065bc92f';
         const studentResponse = await StudentService.getStudentById(studentId);
-        console.log(studentResponse, 'studentResponse');
 
         const classResponse = await ClassService.getClassById(
           studentResponse?.event_id as string
@@ -221,16 +172,51 @@ function Example() {
 
         setEvents(prevEvents => [...prevEvents, classResponse]);
         setGetStudent(studentResponse);
-        setLoading(false);
-      } catch (error: any) {
+      } catch (error) {
         console.error('Error fetching data:', error);
-        setError(error);
+        setError('Failed to fetch data. Please try again.');
+      } finally {
         setLoading(false);
       }
     };
 
     fetchData();
   }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      if (getStudent?.event_id) {
+        try {
+          const studentEventResponse = await StudentService.getStudentByEventID(
+            getStudent.event_id
+          );
+          console.log(studentEventResponse, 'studentEventResponse');
+          setStudents(prevStudents => [...prevStudents, studentEventResponse]);
+        } catch (error) {
+          console.error('Error fetching student event data:', error);
+          toast({
+            title: 'Error',
+            description:
+              'Failed to fetch student event data. Please try again.',
+            status: 'error',
+            duration: 5000,
+            isClosable: true,
+          });
+        }
+      }
+    };
+
+    fetchData();
+  }, [getStudent?.event_id]);
+  console.log(students, 'fect');
+
+  if (loading) {
+    return <Spinner size="xl" />;
+  }
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
   return (
     <>
       {events.map(evnt => (
@@ -260,88 +246,94 @@ function Example() {
               Estudantes selecionados para a aula!
             </h2>
             <ol className="mt-4 space-y-1 text-sm leading-6 text-gray-500">
-              {students.map(student => (
-                <li
-                  key={student.id}
-                  className="group flex items-center space-x-4 rounded-xl px-4 py-2 focus-within:bg-gray-100 hover:bg-gray-100"
-                >
-                  <img
-                    src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                    alt=""
-                    className="h-10 w-10 flex-none rounded-full"
-                  />
-                  <div className="flex-auto">
-                    <p className="text-gray-900">{student.name}</p>
-                    <p className="mt-0.5">{student.email}</p>
-                  </div>
-                  <Menu
-                    as="div"
-                    className="relative opacity-0 focus-within:opacity-100 group-hover:opacity-100"
-                  >
-                    <div>
-                      <Menu.Button className="-m-2 flex items-center rounded-full p-1.5 text-gray-500 hover:text-gray-600">
-                        <span className="sr-only">Open options</span>
-                        <EllipsisVerticalIcon
-                          className="h-6 w-6"
-                          aria-hidden="true"
+              {students.map((item: any, index: any) => {
+                return item.students?.map(
+                  (student: StudentI, studentIndex: any) => {
+                    return (
+                      <li
+                        key={studentIndex}
+                        className="group flex items-center space-x-4 rounded-xl px-4 py-2 focus-within:bg-gray-100 hover:bg-gray-100"
+                      >
+                        <img
+                          src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                          alt=""
+                          className="h-10 w-10 flex-none rounded-full"
                         />
-                      </Menu.Button>
-                    </div>
-
-                    <Transition
-                      as={Fragment}
-                      enter="transition ease-out duration-100"
-                      enterFrom="transform opacity-0 scale-95"
-                      enterTo="transform opacity-100 scale-100"
-                      leave="transition ease-in duration-75"
-                      leaveFrom="transform opacity-100 scale-100"
-                      leaveTo="transform opacity-0 scale-95"
-                    >
-                      <Menu.Items className="absolute right-0 z-10 mt-2 w-36 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                        <div className="py-1">
-                          <Menu.Item>
-                            {({ active }) => (
-                              <a
-                                href="#"
-                                className={classNames(
-                                  active
-                                    ? 'bg-gray-100 text-gray-900'
-                                    : 'text-gray-700',
-                                  'block px-4 py-2 text-sm'
-                                )}
-                              >
-                                Edit
-                              </a>
-                            )}
-                          </Menu.Item>
-                          <Menu.Item>
-                            {({ active }) => (
-                              <a
-                                href="#"
-                                className={classNames(
-                                  active
-                                    ? 'bg-gray-100 text-gray-900'
-                                    : 'text-gray-700',
-                                  'block px-4 py-2 text-sm'
-                                )}
-                              >
-                                Cancel
-                              </a>
-                            )}
-                          </Menu.Item>
+                        <div className="flex-auto">
+                          <p className="text-gray-900">{student.name}</p>
+                          <p className="mt-0.5">{student.email}</p>
                         </div>
-                      </Menu.Items>
-                    </Transition>
-                  </Menu>
-                </li>
-              ))}
+                        <Menu
+                          as="div"
+                          className="relative opacity-0 focus-within:opacity-100 group-hover:opacity-100"
+                        >
+                          <div>
+                            <Menu.Button className="-m-2 flex items-center rounded-full p-1.5 text-gray-500 hover:text-gray-600">
+                              <span className="sr-only">Open options</span>
+                              <EllipsisVerticalIcon
+                                className="h-6 w-6"
+                                aria-hidden="true"
+                              />
+                            </Menu.Button>
+                          </div>
+
+                          <Transition
+                            as={Fragment}
+                            enter="transition ease-out duration-100"
+                            enterFrom="transform opacity-0 scale-95"
+                            enterTo="transform opacity-100 scale-100"
+                            leave="transition ease-in duration-75"
+                            leaveFrom="transform opacity-100 scale-100"
+                            leaveTo="transform opacity-0 scale-95"
+                          >
+                            <Menu.Items className="absolute right-0 z-10 mt-2 w-36 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                              <div className="py-1">
+                                <Menu.Item>
+                                  {({ active }) => (
+                                    <a
+                                      href="#"
+                                      className={classNames(
+                                        active
+                                          ? 'bg-gray-100 text-gray-900'
+                                          : 'text-gray-700',
+                                        'block px-4 py-2 text-sm'
+                                      )}
+                                    >
+                                      Edit
+                                    </a>
+                                  )}
+                                </Menu.Item>
+                                <Menu.Item>
+                                  {({ active }) => (
+                                    <a
+                                      href="#"
+                                      className={classNames(
+                                        active
+                                          ? 'bg-gray-100 text-gray-900'
+                                          : 'text-gray-700',
+                                        'block px-4 py-2 text-sm'
+                                      )}
+                                    >
+                                      Cancel
+                                    </a>
+                                  )}
+                                </Menu.Item>
+                              </div>
+                            </Menu.Items>
+                          </Transition>
+                        </Menu>
+                      </li>
+                    );
+                  }
+                );
+              })}
             </ol>
           </section>
         </Card>
       ))}
     </>
   );
-}
+};
 
 const settings = [
   {

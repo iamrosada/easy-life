@@ -118,7 +118,7 @@ const SearchStudent: React.FC = () => {
       <Box w="96" borderRight="1px" borderColor="gray.200">
         {/* Right Side - Student List */}
         <Flex direction="column" h="100%" p="6">
-          <Flex spaceX="4" mb="4">
+          <Flex mb="4" className="space-x-4">
             <Input
               type="search"
               name="search"

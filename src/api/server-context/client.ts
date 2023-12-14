@@ -65,7 +65,15 @@ const StudentService = {
       throw error;
     }
   },
-
+  getStudentByEventID: async (eventId: string) => {
+    try {
+      const response = await api.get(`/students/event/${eventId}/students`);
+      return response.data;
+    } catch (error) {
+      console.error(`Error getting student with Event ID ${eventId}:`, error);
+      throw error;
+    }
+  },
   updateStudent: async (data: any) => {
     try {
       const response = await api.put('/students', data);
