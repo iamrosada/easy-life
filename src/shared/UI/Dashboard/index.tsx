@@ -15,7 +15,8 @@ import {
   Text,
   CardFooter,
   Button,
-  Spinner,
+  SkeletonText,
+  SkeletonCircle,
 } from '@chakra-ui/react';
 import { useToast } from '@chakra-ui/react';
 
@@ -114,31 +115,6 @@ export default function Dashboard() {
     </Box>
   );
 }
-// useEffect(() => {
-//   async function fetchData() {
-//     // You can await here
-//     const response = await ClassService.getClassById(
-//       getStudent?.event_id as string
-//     );
-//     setEvents([...events, response]);
-//   }
-//   fetchData();
-// }, [getStudent?.event_id]);
-
-// useEffect(() => {
-//   const someId = '19c0dd14-6f81-4622-b645-f04e065bc92f';
-//   async function fetchData() {
-//     // You can await here
-//     const response = await StudentService.getStudentById(someId);
-//     console.log(response, 'res');
-//     const respons = await ClassService.getClassById(
-//       getStudent?.event_id as string
-//     );
-//     setEvents([...events, respons]);
-//     setGetStudent(response);
-//   }
-//   fetchData();
-// }, []);
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function classNames(...classes: any) {
@@ -159,6 +135,7 @@ const Example: React.FC = () => {
   const [events, setEvents] = useState<EventsI[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [showSkeleton, setShowSkeleton] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -177,6 +154,9 @@ const Example: React.FC = () => {
         setError('Failed to fetch data. Please try again.');
       } finally {
         setLoading(false);
+        setTimeout(() => {
+          setShowSkeleton(false);
+        }, 3000);
       }
     };
 
@@ -210,12 +190,21 @@ const Example: React.FC = () => {
   }, [getStudent?.event_id]);
   console.log(students, 'fect');
 
-  if (loading) {
-    return <Spinner size="xl" />;
-  }
-
   if (error) {
     return <p>Error: {error}</p>;
+  }
+  if (loading) {
+    return (
+      <Box
+        padding="6"
+        // boxShadow="lg"
+        bg="white"
+        className="mb-8 mx-auto max-w-[1100px]  h-[100vh]"
+      >
+        <SkeletonCircle size="10" />
+        <SkeletonText mt="4" noOfLines={4} spacing="4" skeletonHeight="3" />
+      </Box>
+    );
   }
   return (
     <>
@@ -245,89 +234,103 @@ const Example: React.FC = () => {
             <h2 className="text-base font-semibold leading-6 text-gray-900 p-8">
               Estudantes selecionados para a aula!
             </h2>
-            <ol className="mt-4 space-y-1 text-sm leading-6 text-gray-500">
-              {students.map((item: any, index: any) => {
-                return item.students?.map(
-                  (student: StudentI, studentIndex: any) => {
-                    return (
-                      <li
-                        key={studentIndex}
-                        className="group flex items-center space-x-4 rounded-xl px-4 py-2 focus-within:bg-gray-100 hover:bg-gray-100"
-                      >
-                        <img
-                          src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                          alt=""
-                          className="h-10 w-10 flex-none rounded-full"
-                        />
-                        <div className="flex-auto">
-                          <p className="text-gray-900">{student.name}</p>
-                          <p className="mt-0.5">{student.email}</p>
-                        </div>
-                        <Menu
-                          as="div"
-                          className="relative opacity-0 focus-within:opacity-100 group-hover:opacity-100"
+            {showSkeleton && (
+              <Box padding="6" bg="white">
+                {/* <SkeletonCircle size="10" /> */}
+                <SkeletonText
+                  mt="4"
+                  noOfLines={6}
+                  spacing="4"
+                  skeletonHeight="4"
+                />
+                {/* <SkeletonCircle size="10" /> */}
+              </Box>
+            )}
+            {!showSkeleton && (
+              <ol className="mt-4 space-y-1 text-sm leading-6 text-gray-500">
+                {students.map((item: any, index: any) => {
+                  return item.students?.map(
+                    (student: StudentI, studentIndex: any) => {
+                      return (
+                        <li
+                          key={studentIndex}
+                          className="group flex items-center space-x-4 rounded-xl px-4 py-2 focus-within:bg-gray-100 hover:bg-gray-100"
                         >
-                          <div>
-                            <Menu.Button className="-m-2 flex items-center rounded-full p-1.5 text-gray-500 hover:text-gray-600">
-                              <span className="sr-only">Open options</span>
-                              <EllipsisVerticalIcon
-                                className="h-6 w-6"
-                                aria-hidden="true"
-                              />
-                            </Menu.Button>
+                          <img
+                            src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                            alt=""
+                            className="h-10 w-10 flex-none rounded-full"
+                          />
+                          <div className="flex-auto">
+                            <p className="text-gray-900">{student.name}</p>
+                            <p className="mt-0.5">{student.email}</p>
                           </div>
-
-                          <Transition
-                            as={Fragment}
-                            enter="transition ease-out duration-100"
-                            enterFrom="transform opacity-0 scale-95"
-                            enterTo="transform opacity-100 scale-100"
-                            leave="transition ease-in duration-75"
-                            leaveFrom="transform opacity-100 scale-100"
-                            leaveTo="transform opacity-0 scale-95"
+                          <Menu
+                            as="div"
+                            className="relative opacity-0 focus-within:opacity-100 group-hover:opacity-100"
                           >
-                            <Menu.Items className="absolute right-0 z-10 mt-2 w-36 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                              <div className="py-1">
-                                <Menu.Item>
-                                  {({ active }) => (
-                                    <a
-                                      href="#"
-                                      className={classNames(
-                                        active
-                                          ? 'bg-gray-100 text-gray-900'
-                                          : 'text-gray-700',
-                                        'block px-4 py-2 text-sm'
-                                      )}
-                                    >
-                                      Edit
-                                    </a>
-                                  )}
-                                </Menu.Item>
-                                <Menu.Item>
-                                  {({ active }) => (
-                                    <a
-                                      href="#"
-                                      className={classNames(
-                                        active
-                                          ? 'bg-gray-100 text-gray-900'
-                                          : 'text-gray-700',
-                                        'block px-4 py-2 text-sm'
-                                      )}
-                                    >
-                                      Cancel
-                                    </a>
-                                  )}
-                                </Menu.Item>
-                              </div>
-                            </Menu.Items>
-                          </Transition>
-                        </Menu>
-                      </li>
-                    );
-                  }
-                );
-              })}
-            </ol>
+                            <div>
+                              <Menu.Button className="-m-2 flex items-center rounded-full p-1.5 text-gray-500 hover:text-gray-600">
+                                <span className="sr-only">Open options</span>
+                                <EllipsisVerticalIcon
+                                  className="h-6 w-6"
+                                  aria-hidden="true"
+                                />
+                              </Menu.Button>
+                            </div>
+
+                            <Transition
+                              as={Fragment}
+                              enter="transition ease-out duration-100"
+                              enterFrom="transform opacity-0 scale-95"
+                              enterTo="transform opacity-100 scale-100"
+                              leave="transition ease-in duration-75"
+                              leaveFrom="transform opacity-100 scale-100"
+                              leaveTo="transform opacity-0 scale-95"
+                            >
+                              <Menu.Items className="absolute right-0 z-10 mt-2 w-36 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                                <div className="py-1">
+                                  <Menu.Item>
+                                    {({ active }) => (
+                                      <a
+                                        href="#"
+                                        className={classNames(
+                                          active
+                                            ? 'bg-gray-100 text-gray-900'
+                                            : 'text-gray-700',
+                                          'block px-4 py-2 text-sm'
+                                        )}
+                                      >
+                                        Edit
+                                      </a>
+                                    )}
+                                  </Menu.Item>
+                                  <Menu.Item>
+                                    {({ active }) => (
+                                      <a
+                                        href="#"
+                                        className={classNames(
+                                          active
+                                            ? 'bg-gray-100 text-gray-900'
+                                            : 'text-gray-700',
+                                          'block px-4 py-2 text-sm'
+                                        )}
+                                      >
+                                        Cancel
+                                      </a>
+                                    )}
+                                  </Menu.Item>
+                                </div>
+                              </Menu.Items>
+                            </Transition>
+                          </Menu>
+                        </li>
+                      );
+                    }
+                  );
+                })}
+              </ol>
+            )}
           </section>
         </Card>
       ))}

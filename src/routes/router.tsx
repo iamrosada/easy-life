@@ -5,6 +5,7 @@ import ChatComponent from '@/shared/UI/Chat';
 // import ChatComponent from '@/shared/UI/Chat';
 import { CreateAccountComponent } from '@/shared/UI/CreateAccount/CreateAccount';
 import Dashboard from '@/shared/UI/Dashboard';
+import Footer from '@/shared/UI/Meets/FooterMeeting';
 import SigningComponent from '@/shared/UI/Signin/Signin';
 import theme from '@/styles/global-style';
 import { ChakraProvider } from '@chakra-ui/react';
@@ -46,7 +47,15 @@ export default function Router() {
             </ChakraProvider>
           }
         />
-
+        <Route
+          index
+          path="/meet"
+          element={
+            <ChakraProvider theme={theme}>
+              <Footer />
+            </ChakraProvider>
+          }
+        />
         <Route
           index
           path="/create-account"
