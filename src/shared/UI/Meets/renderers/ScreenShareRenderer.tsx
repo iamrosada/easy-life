@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from "react";
-import { Flex } from "@chakra-ui/react";
+import { useEffect, useRef } from 'react';
+import { Flex } from '@chakra-ui/react';
 
 interface Props {
   attach: (element: HTMLVideoElement) => void;
@@ -24,7 +24,7 @@ export default function ScreenShareRenderer({ attach }: Props): JSX.Element {
       position="relative"
     >
       <video
-        style={{ height: "100%", margin: "0px auto" }}
+        style={{ height: '100%', margin: '0px auto' }}
         ref={videoEl}
         autoPlay
         playsInline

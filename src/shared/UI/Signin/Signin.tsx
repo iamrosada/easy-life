@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React from 'react';
-import { Flex, Heading, Stack, Image } from '@chakra-ui/react';
+import { Flex, Heading, Stack } from '@chakra-ui/react';
 import { Tab } from '@headlessui/react';
 
 import { useEffect, useState } from 'react';
@@ -109,7 +108,7 @@ const student = [
 
 export function AutoComplete() {
   const [query, setQuery] = useState('');
-  const [selectedPerson, setSelectedPerson] = useState(null);
+  const [selectedPerson, setSelectedPerson] = useState<any>(null);
 
   const filteredStudent =
     query === ''
@@ -126,7 +125,9 @@ export function AutoComplete() {
 
   useEffect(() => {
     setNameUser(
-      JSON.stringify(selectedPerson === null ? '' : selectedPerson.name)
+      JSON.stringify(
+        selectedPerson === null ? '' : (selectedPerson.name as any)
+      )
     );
     setFormState({
       ...formState,

@@ -11,7 +11,7 @@ import screenshotMoscow from './images/screenshots/moscow.jpg';
 import screenshotSouth from './images/screenshots/south.jpg';
 
 import screenshotDubai from './images/screenshots/dubai.jpg';
-import screenshotVatReturns from './images/screenshots/vat-returns.png';
+// import screenshotVatReturns from './images/screenshots/vat-returns.png';
 
 const features = [
   {

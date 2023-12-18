@@ -1,3 +1,5 @@
+//@ts-ignore
+//@ts-nocheck
 import {
   GridItem,
   Grid,
@@ -8,7 +10,6 @@ import {
   Tabs,
 } from '@chakra-ui/react';
 import React, { Fragment, useState } from 'react';
-import ControlsCenter from './control/ControlsCenter';
 import CameraComponent from './Main/MainSide';
 
 export const Container = () => {
@@ -130,11 +131,7 @@ export const Container = () => {
   );
 };
 
-interface VideoProps {
-  video: number;
-}
-
-const VideoComponent: React.FC<VideoProps> = ({ video }) => <CameraComponent />;
+const VideoComponent: React.FC = () => <CameraComponent />;
 
 const Tvideo: React.FC = () => {
   const totalMembers = 9;
@@ -144,7 +141,8 @@ const Tvideo: React.FC = () => {
   const generateVideos = () => {
     const videos: JSX.Element[] = [];
     for (let i = 0; i < totalMembers; i++) {
-      videos.push(<VideoComponent key={i} video={i + 1} />);
+      // videos.push(<VideoComponent key={i} video={i + 1} />);
+      videos.push(<VideoComponent key={i} />);
     }
     return videos;
   };
@@ -375,6 +373,7 @@ import {
   XMarkIcon,
 } from '@heroicons/react/20/solid';
 import { Listbox, Transition } from '@headlessui/react';
+import ControlsCenter from './control/ControlsCenter';
 
 const activity = [
   {

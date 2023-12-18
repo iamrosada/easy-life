@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { ClassI } from '@/shared/UI/Dashboard';
 import axios from 'axios';
 
 const BASE_URL = 'http://localhost:8080/api';
@@ -11,9 +10,15 @@ const api = axios.create({
     'Content-Type': 'application/json',
   },
 });
-
+interface EventsI {
+  id?: string;
+  title_of_lesson: string;
+  description: string;
+  teacher_id: string;
+  students_ids: string[];
+}
 const ClassService = {
-  createClass: async (data: ClassI) => {
+  createClass: async (data: EventsI) => {
     try {
       const response = await api.post('/class/', data);
       return response.data;

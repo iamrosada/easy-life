@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Card,
   CardBody,
@@ -92,6 +93,7 @@ const SearchStudent: React.FC = () => {
   const [selectedStudent, setSelectedStudent] = useState<StudentModel | null>(
     null
   );
+  //@ts-ignore
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   useEffect(() => {

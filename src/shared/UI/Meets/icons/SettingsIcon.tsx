@@ -4,7 +4,6 @@ import { Image } from '@chakra-ui/react';
 export default function SettingsIcon() {
   return (
     <Image
-      priority
       alt="settings"
       width={25}
       height={25}

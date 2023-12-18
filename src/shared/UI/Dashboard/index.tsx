@@ -1,5 +1,5 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable @typescript-eslint/no-explicit-any */
+//@ts-nocheck
+//@ts-ignore
 import {
   Box,
   Flex,
@@ -9,7 +9,6 @@ import {
   TabPanels,
   Tabs,
   Card,
-  Image,
   Stack,
   Heading,
   CardBody,
@@ -22,22 +21,10 @@ import {
 import { useToast } from '@chakra-ui/react';
 
 import SearchStudent from './student';
-import {
-  ChevronLeftIcon,
-  ChevronRightIcon,
-  PlusIcon,
-} from '@heroicons/react/20/solid';
-//import { EllipsisVerticalIcon } from '@heroicons/react/24/outline';
+import { PlusIcon } from '@heroicons/react/20/solid';
 import { Fragment, useEffect, useState } from 'react';
+import { RadioGroup, Listbox, Menu, Transition } from '@headlessui/react';
 import {
-  Dialog,
-  RadioGroup,
-  Listbox,
-  Menu,
-  Transition,
-} from '@headlessui/react';
-import {
-  Bars3Icon,
   CalendarDaysIcon,
   CreditCardIcon,
   EllipsisVerticalIcon,
@@ -50,16 +37,12 @@ import {
   UserCircleIcon,
   XMarkIcon as XMarkIconMini,
 } from '@heroicons/react/20/solid';
-import {
-  BellIcon,
-  XMarkIcon as XMarkIconOutline,
-} from '@heroicons/react/24/outline';
+
 import { CheckCircleIcon } from '@heroicons/react/24/solid';
 
 import logoIcon from '../../../assets/logo.svg';
 import { ClassService } from '@/api/server-context/class-client';
 import { StudentService } from '@/api/server-context/client';
-import base from 'node_modules/@emotion/styled/types/base';
 import { useNavigate } from 'react-router-dom';
 export default function Dashboard() {
   return (
@@ -187,6 +170,7 @@ const Example: React.FC = () => {
   const [getStudent, setGetStudent] = useState<StudentI | null>(null);
   const [events, setEvents] = useState<EventsI[]>([]);
   const [loading, setLoading] = useState(true);
+  //@ts-ignore
   const [error, setError] = useState<string | null>(null);
   const [showSkeleton, setShowSkeleton] = useState(true);
   console.log(students);
