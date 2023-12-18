@@ -7,6 +7,7 @@ import { CreateAccountComponent } from '@/shared/UI/CreateAccount/CreateAccount'
 import Dashboard from '@/shared/UI/Dashboard';
 import { Container } from '@/shared/UI/Meets/FooterMeeting';
 import SigningComponent from '@/shared/UI/Signin/Signin';
+import VideoChat from '@/shared/VideoChat';
 import theme from '@/styles/global-style';
 import { ChakraProvider } from '@chakra-ui/react';
 import { Route, Routes } from 'react-router-dom';
@@ -68,7 +69,24 @@ export default function Router() {
             </Background>
           }
         />
-        <Route path="*" element={<Missing />} />
+        <Route
+          index
+          path="/v"
+          element={
+            <ChakraProvider theme={theme}>
+              <VideoChat />
+            </ChakraProvider>
+          }
+        />
+
+        <Route
+          path="*"
+          element={
+            <ChakraProvider theme={theme}>
+              <Missing />
+            </ChakraProvider>
+          }
+        />
       </Routes>
     </div>
   );

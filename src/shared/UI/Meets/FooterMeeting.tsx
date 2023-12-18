@@ -152,7 +152,7 @@ const Tvideo: React.FC = () => {
   return (
     <div
       // className={`grid grid-flow-col ${result} gap-1 bg-red-500 min-w-full h-[92vh] p-1`}
-      className={`grid grid-flow-col ${result} gap-1 bg-white min-w-full max-h-[1900px] h-full mt-2 p-1`}
+      className={`grid grid-flow-col ${result} gap-1 bg-black min-w-full max-h-[1900px] h-full mt-2 p-1`}
     >
       {generateVideos()}
     </div>

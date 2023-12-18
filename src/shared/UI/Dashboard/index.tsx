@@ -59,6 +59,7 @@ import logoIcon from '../../../assets/logo.svg';
 import { ClassService } from '@/api/server-context/class-client';
 import { StudentService } from '@/api/server-context/client';
 import base from 'node_modules/@emotion/styled/types/base';
+import { useNavigate } from 'react-router-dom';
 export default function Dashboard() {
   return (
     <Box className="h-[100vh]">
@@ -129,6 +130,7 @@ interface EventsI {
 }
 const Example: React.FC = () => {
   const toast = useToast();
+  const navigate = useNavigate();
 
   const [students, setStudents] = useState<StudentI[]>([]);
   const [getStudent, setGetStudent] = useState<StudentI | null>(null);
@@ -224,7 +226,11 @@ const Example: React.FC = () => {
             </CardBody>
 
             <CardFooter>
-              <Button variant="solid" colorScheme="blue">
+              <Button
+                variant="solid"
+                colorScheme="blue"
+                onClick={() => navigate('/meet')}
+              >
                 Participar do evento
               </Button>
             </CardFooter>
