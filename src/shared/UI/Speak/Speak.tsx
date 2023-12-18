@@ -1,18 +1,18 @@
 import speakIcon from '../../../assets/speak.svg';
-import briefIcon from '../../../../assets/briefcase.svg';
-import ideaIcon from '../../../../assets/idea.svg';
+import briefIcon from './../../../assets/briefcase.svg';
+import ideaIcon from './../../../assets/idea.svg';
 
-import expirienceIcon from '../../../../assets/user_experience.svg';
-import userMarkIcon from '../../../../assets/user_mark.svg';
-import userWebIcon from '../../../../assets/user_web.svg';
-import nextIcon from '../../../../assets/next.svg';
+import expirienceIcon from './../../../assets/user_experience.svg';
+import userMarkIcon from './../../../assets/user_mark.svg';
+import userWebIcon from './../../../assets/user_web.svg';
+import nextIcon from './../../../assets/next.svg';
 import nextPurpleIcon from './../../../assets/next_purple.svg';
 
-import facebookIcon from '../../../../assets/facebook.svg';
-import xIcon from '../../../../assets/x.svg';
-import inIcon from '../../../../assets/in.svg';
+import facebookIcon from './../../../assets/facebook.svg';
+import xIcon from './../../../assets/x.svg';
+import inIcon from './../../../assets/in.svg';
 
-import footerIcon from '../../../../assets/icon_main.svg';
+import footerIcon from './../../../assets/icon_main.svg';
 
 export const SpeakComponent = () => {
   return (
