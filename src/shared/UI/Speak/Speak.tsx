@@ -1,5 +1,5 @@
 import speakIcon from '../../../assets/speak.svg';
-import briefIcon from '../../../../assets/Briefcase.svg';
+import briefIcon from '../../../../assets/briefcase.svg';
 import ideaIcon from '../../../../assets/idea.svg';
 
 import expirienceIcon from '../../../../assets/user_experience.svg';
