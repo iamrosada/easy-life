@@ -41,7 +41,23 @@ interface StudentModel {
   course_language: string;
   event_id: string;
 }
-
+const localStudents: StudentModel[] = [
+  {
+    id: 'local-1',
+    name: 'Estudante Local 1',
+    full_name: 'Nome Completo 1',
+    course_language: 'Inglês',
+    event_id: 'event-local-1',
+  },
+  {
+    id: 'local-2',
+    name: 'Estudante Local 2',
+    full_name: 'Nome Completo 2',
+    course_language: 'Espanhol',
+    event_id: 'event-local-2',
+  },
+  // Adicione mais estudantes locais conforme necessário
+];
 // eslint-disable-next-line react-refresh/only-export-components
 const StudentListItem: React.FC<{
   person: StudentModel;
@@ -85,6 +101,9 @@ const SearchStudent: React.FC = () => {
         setDataArray(students);
         setFilteredStudent(students);
       } catch (error) {
+        // Se falhar, use dados locais
+        setDataArray(localStudents);
+        setFilteredStudent(localStudents);
         console.error('Error fetching student data:', error);
       }
     };

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   Box,
@@ -128,32 +129,85 @@ interface EventsI {
   teacher_id: string;
   students_ids: string[];
 }
+// Mock de dados locais
+const localEventData: EventsI = {
+  id: '1',
+  title_of_lesson: 'Aula Local',
+  description: 'Esta é uma aula local quando o backend não está disponível.',
+  teacher_id: 'teacher-1',
+  students_ids: ['student-1', 'student-2'],
+};
+const localStudentEventData = {
+  students: [
+    {
+      id: '7671c160-9c2e-4632-8f33-c766ea107ea7',
+      name: 'Rosada',
+      full_name: 'Luis Da Silva Gama Agua Rosada',
+      course_language: 'russo',
+      teachers_ids: ['12334', '12344'],
+      event_id: 'bfb57bc4-76c0-467c-aeee-fc5f75b7c05c',
+      email: 'rosa@gmailxx',
+    },
+    {
+      id: '19c0dd14-6f81-4622-b645-f04e065bc92f',
+      name: 'Rosada',
+      full_name: 'Luis Da Silva Gama Agua Rosada',
+      course_language: 'russo',
+      teachers_ids: ['12334', '12344'],
+      event_id: 'bfb57bc4-76c0-467c-aeee-fc5f75b7c05c',
+      email: 'rosa@gmail',
+    },
+    {
+      id: '60744a6e-2f21-4273-b4b9-a2db58388793',
+      name: 'Magui',
+      full_name: 'Rosada',
+      course_language: 'russo',
+      teachers_ids: ['12334', '12344'],
+      event_id: 'bfb57bc4-76c0-467c-aeee-fc5f75b7c05c',
+      email: 'ivip@gmail',
+    },
+    {
+      id: 'a9deebe3-15b4-4aec-9d74-ee863415a573',
+      name: 'Isa',
+      full_name: 'amor',
+      course_language: 'russo',
+      teachers_ids: ['12334', '12344'],
+      event_id: 'bfb57bc4-76c0-467c-aeee-fc5f75b7c05c',
+      email: 'gama@gmail',
+    },
+  ],
+};
 const Example: React.FC = () => {
   const toast = useToast();
   const navigate = useNavigate();
 
-  const [students, setStudents] = useState<StudentI[]>([]);
+  const [students, setStudents] = useState<StudentI[]>([
+    localStudentEventData as any,
+  ]);
   const [getStudent, setGetStudent] = useState<StudentI | null>(null);
   const [events, setEvents] = useState<EventsI[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [showSkeleton, setShowSkeleton] = useState(true);
-
+  console.log(students);
   useEffect(() => {
     const fetchData = async () => {
+      let classResponse: object;
       try {
         const studentId = '19c0dd14-6f81-4622-b645-f04e065bc92f';
         const studentResponse = await StudentService.getStudentById(studentId);
 
-        const classResponse = await ClassService.getClassById(
+        classResponse = await ClassService.getClassById(
           studentResponse?.event_id as string
         );
 
-        setEvents(prevEvents => [...prevEvents, classResponse]);
+        setEvents(prevEvents => [...prevEvents, classResponse as any]);
         setGetStudent(studentResponse);
       } catch (error) {
         console.error('Error fetching data:', error);
-        setError('Failed to fetch data. Please try again.');
+        // setError('Failed to fetch data. Please try again.');
+
+        setEvents(prevEvents => [...prevEvents, localEventData as any]);
       } finally {
         setLoading(false);
         setTimeout(() => {
@@ -172,10 +226,15 @@ const Example: React.FC = () => {
           const studentEventResponse = await StudentService.getStudentByEventID(
             getStudent.event_id
           );
-          console.log(studentEventResponse, 'studentEventResponse');
+          // console.log(studentEventResponse, 'studentEventResponse');
           setStudents(prevStudents => [...prevStudents, studentEventResponse]);
         } catch (error) {
-          console.error('Error fetching student event data:', error);
+          // console.error('Error fetching student event data:', error);
+          setStudents(prevStudents => [
+            ...prevStudents,
+            localStudentEventData as any,
+          ]);
+          console.log();
           toast({
             title: 'Error',
             description:
@@ -189,8 +248,9 @@ const Example: React.FC = () => {
     };
 
     fetchData();
-  }, [getStudent?.event_id]);
-  console.log(students, 'fect');
+  }, []);
+
+  // }, [getStudent?.event_id]);
 
   if (error) {
     return <p>Error: {error}</p>;
@@ -255,6 +315,7 @@ const Example: React.FC = () => {
             {!showSkeleton && (
               <ol className="mt-4 space-y-1 text-sm leading-6 text-gray-500">
                 {students.map((item: any, index: any) => {
+                  console.log(item, 'item');
                   return item.students?.map(
                     (student: StudentI, studentIndex: any) => {
                       return (
@@ -639,12 +700,12 @@ function CreateClassComponent() {
               </div>
             </RadioGroup>
 
-            {/* <div>
+            <div>
               <label
                 htmlFor="tags"
                 className="block text-sm font-medium leading-6 text-gray-900"
               >
-                Tags
+                Tags Para cada Aula
               </label>
               <input
                 type="text"
@@ -652,7 +713,7 @@ function CreateClassComponent() {
                 id="tags"
                 className="mt-2 block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-500 sm:text-sm sm:leading-6"
               />
-            </div> */}
+            </div>
 
             <div className="flex justify-end gap-x-3">
               <button
