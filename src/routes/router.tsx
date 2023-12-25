@@ -8,7 +8,7 @@ import SigningComponent from '@/shared/UI/Signin/Signin';
 import theme from '@/styles/global-style';
 import { ChakraProvider } from '@chakra-ui/react';
 import { Route, Routes } from 'react-router-dom';
-
+import { WebRTCComponent } from '../api/server-context/webrtc';
 export default function Router() {
   return (
     <div>
@@ -54,6 +54,15 @@ export default function Router() {
                 <CreateAccountComponent />
               </ChakraProvider>
             </Background>
+          }
+        />
+        <Route
+          index
+          path="/web"
+          element={
+            <ChakraProvider theme={theme}>
+              <WebRTCComponent />
+            </ChakraProvider>
           }
         />
 
